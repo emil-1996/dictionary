@@ -5,3 +5,4 @@ RUN apt-get update && \
 RUN docker-php-ext-install mysqli pdo pdo_mysql
 RUN apt-get update
 RUN apt-get install mc -y
+CMD php dictionary/artisan serve --host=0.0.0.0 --port=8000
