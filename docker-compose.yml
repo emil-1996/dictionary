@@ -1,0 +1,32 @@
+version: "3.7"
+services:
+  web-server:
+    build:
+      dockerfile: ./Dockerfile
+      context: .
+    restart: always
+    volumes:
+      - /home/emil/GIT/PHP8:/var/www/html/
+    ports:
+      - "80:80"
+  mysql-server:
+    image: mysql:8.0.22
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+    volumes:
+      - /home/emil/GIT/PHP8/db/databases:/var/lib/mysql
+    ports:
+      - "3306:3306"
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:5.0.4
+    restart: always
+    environment:
+      PMA_HOST: mysql-server
+      PMA_USER: root
+      PMA_PASSWORD: secret
+    ports:
+      - "5000:80"
+volumes:
+  mysql-data:
