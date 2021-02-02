@@ -6,7 +6,7 @@ services:
       context: .
     restart: always
     volumes:
-      - /home/emil/GIT/PHP8:/var/www/html/
+      - ./:/var/www/html/
     ports:
       - "80:80"
   mysql-server:
@@ -15,7 +15,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: secret
     volumes:
-      - /home/emil/GIT/PHP8/db/databases:/var/lib/mysql
+      - ./db/databases:/var/lib/mysql
     ports:
       - "3306:3306"
 

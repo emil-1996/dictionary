@@ -1,5 +1,5 @@
 <?php
-$statusCode = 400;
+$statusCode = 510;
 
 $message = match ($statusCode) {
     200, 300 => null,
