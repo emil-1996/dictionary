@@ -15,6 +15,8 @@ class Dictionary extends Model
         return DB::table('dict_item')
             ->select('dict_item.*', 'dict_conf.language as language', 'dict_conf.lang_code as lang_code')
             ->leftJoin('dict_conf', 'dict_item.lang_id', '=', 'dict_conf.id')
+            ->where('dict_item.status', '=', "1")
+            ->where('dict_conf.status', '=', "1")
             ->get();
 
     }
@@ -25,6 +27,8 @@ class Dictionary extends Model
             ->select('dict_item.*', 'dict_conf.language as language', 'dict_conf.lang_code as lang_code')
             ->leftJoin('dict_conf', 'dict_item.lang_id', '=', 'dict_conf.id')
             ->where('dict_item.id', '=', $id)
+            ->where('dict_item.status', '=', "1")
+            ->where('dict_conf.status', '=', "1")
             ->get();
 
     }

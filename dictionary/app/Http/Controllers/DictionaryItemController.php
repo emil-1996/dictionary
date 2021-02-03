@@ -10,12 +10,14 @@ class DictionaryItemController extends Controller
 {
     public function index()
     {
-        echo DictionaryItem::all();
+        echo DictionaryItem::all()->where("status", "=", "1");
     }
 
     public function show($id)
     {
-        echo DictionaryItem::findOrFail($id);
+        echo DictionaryItem::all()
+            ->where("id", "=", $id)
+            ->where("status", "=", "1");
     }
 
     public function create(Request $request)

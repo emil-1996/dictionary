@@ -9,12 +9,14 @@ class DictionaryConfigController extends Controller
 {
     public function index()
     {
-        echo DictionaryConfig::all();
+        echo DictionaryConfig::all()->where("status", "=", "1");
     }
 
     public function show($id)
     {
-        echo DictionaryConfig::findOrFail($id);
+        echo DictionaryConfig::all()
+            ->where("id", "=", $id)
+            ->where("status", "=", "1");
     }
 
     public function create(Request $request)
