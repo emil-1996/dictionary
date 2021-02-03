@@ -17,6 +17,7 @@ class CreateDictConfTable extends Migration
             $table->id();
             $table->string('language');
             $table->string('lang_code')->unique();
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }

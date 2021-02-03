@@ -17,6 +17,7 @@ class CreateDictItemTable extends Migration
             $table->id();
             $table->string('lang_id');
             $table->longText('value');
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }
