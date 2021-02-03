@@ -8,8 +8,14 @@ use App\Models\DictionaryItem;
 
 class DictionaryItemController extends Controller
 {
-    public function show()
+    public function index()
     {
-        dd(DictionaryItem::all());
+        echo DictionaryItem::all();
+    }
+
+    public function show($id)
+    {
+        $dictionaryItem = DictionaryItem::findOrFail($id);
+        echo $dictionaryItem;
     }
 }

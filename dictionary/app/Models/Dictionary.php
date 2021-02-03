@@ -10,11 +10,21 @@ class Dictionary extends Model
 {
     use HasFactory;
 
-    static public function getAllWords(): \Illuminate\Support\Collection
+    public static function getAll(): \Illuminate\Support\Collection
     {
         return DB::table('dict_item')
             ->leftJoin('dict_conf', 'dict_item.lang_id', '=', 'dict_conf.id')
             ->get();
 
     }
+
+    public static function show($id)
+    {
+        return DB::table('dict_item')
+            ->leftJoin('dict_conf', 'dict_item.lang_id', '=', 'dict_conf.id')
+            ->where('dict_item.id', '=', $id)
+            ->get();
+
+    }
+
 }

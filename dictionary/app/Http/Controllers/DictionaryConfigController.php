@@ -7,8 +7,13 @@ use App\Models\DictionaryConfig;
 
 class DictionaryConfigController extends Controller
 {
-    public function show()
+    public function index()
     {
-        dd(DictionaryConfig::all());
+        echo DictionaryConfig::all();
+    }
+    public function show($id)
+    {
+        $dictionaryItem = DictionaryConfig::findOrFail($id);
+        echo $dictionaryItem;
     }
 }

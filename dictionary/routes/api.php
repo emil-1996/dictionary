@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('/dictionary', 'App\Http\Controllers\DictionaryController@index');
+Route::get('/dictionary-config', 'App\Http\Controllers\DictionaryConfigController@index');
+Route::get('/dictionary-item', 'App\Http\Controllers\DictionaryItemController@index');
+
+Route::get('/dictionary/{id}', 'App\Http\Controllers\DictionaryController@show');
+Route::get('/dictionary-config/{id}', 'App\Http\Controllers\DictionaryConfigController@show');
+Route::get('/dictionary-item/{id}', 'App\Http\Controllers\DictionaryItemController@show');
