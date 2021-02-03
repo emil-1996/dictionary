@@ -11,9 +11,22 @@ class DictionaryConfigController extends Controller
     {
         echo DictionaryConfig::all();
     }
+
     public function show($id)
     {
-        $dictionaryItem = DictionaryConfig::findOrFail($id);
-        echo $dictionaryItem;
+        echo DictionaryConfig::findOrFail($id);
     }
+
+    public function create(Request $request)
+    {
+        $request->validate(['lang_code' => "required",
+            "language" => "required"]);
+        echo json_encode(DictionaryConfig::create($request->all()));
+    }
+
+    public function delete($id)
+    {
+        echo DictionaryConfig::find($id)?->delete();
+    }
+
 }

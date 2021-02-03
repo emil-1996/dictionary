@@ -15,7 +15,24 @@ class DictionaryItemController extends Controller
 
     public function show($id)
     {
-        $dictionaryItem = DictionaryItem::findOrFail($id);
-        echo $dictionaryItem;
+        echo DictionaryItem::findOrFail($id);
+    }
+
+    public function create(Request $request)
+    {
+        $request->validate(['lang_id' => "required",
+            "value" => "required"]);
+
+        $result = DictionaryConfig::where('id', '=', $request->all()['lang_id'])->count();
+        if (empty($result)) {
+            echo json_encode('Nie można dopasować lang_id do istniejącego słownika');
+        }
+
+        echo json_encode(DictionaryItem::create($request->all()));
+    }
+
+    public function delete($id)
+    {
+        echo DictionaryItem::find($id)?->delete();
     }
 }
