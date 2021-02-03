@@ -10,5 +10,5 @@ class DictionaryConfig extends Model
     use HasFactory;
 
     protected $table = "dict_conf";
-    protected $fillable = ["language", "lang_code"];
+    protected $fillable = ["language", "lang_code", "status"];
 }

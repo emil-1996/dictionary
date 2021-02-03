@@ -10,5 +10,5 @@ class DictionaryItem extends Model
     use HasFactory;
 
     protected $table = "dict_item";
-    protected $fillable = ["lang_id", "value"];
+    protected $fillable = ["lang_id", "value", "status"];
 }

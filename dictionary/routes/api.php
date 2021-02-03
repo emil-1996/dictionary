@@ -27,3 +27,6 @@ Route::post('/dictionary-item/create/', 'App\Http\Controllers\DictionaryItemCont
 
 Route::delete('/dictionary-config/delete/{id}', 'App\Http\Controllers\DictionaryConfigController@delete');
 Route::delete('/dictionary-item/delete/{id}', 'App\Http\Controllers\DictionaryItemController@delete');
+
+Route::post('/dictionary-config/change-status/{id}', 'App\Http\Controllers\DictionaryConfigController@changeStatus');
+Route::post('/dictionary-item/change-status/{id}', 'App\Http\Controllers\DictionaryItemController@changeStatus');

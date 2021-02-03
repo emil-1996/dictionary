@@ -31,4 +31,13 @@ class DictionaryConfigController extends Controller
         echo DictionaryConfig::find($id)?->delete();
     }
 
+    public function changeStatus($id)
+    {
+        $item = DictionaryConfig::find($id);
+        if (empty($item)) {
+            return json_encode('Nie znaleziono szukanego produktu');
+        }
+        return json_encode($item->update(["status" => intval(!$item['status'])]));
+    }
+
 }

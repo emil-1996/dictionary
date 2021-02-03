@@ -37,4 +37,14 @@ class DictionaryItemController extends Controller
     {
         echo DictionaryItem::find($id)?->delete();
     }
+
+    public function changeStatus($id)
+    {
+        $item = DictionaryItem::find($id);
+        if (empty($item)) {
+            return json_encode('Nie znaleziono szukanego produktu');
+        }
+        return json_encode($item->update(["status" => intval(!$item['status'])]));
+    }
+
 }
