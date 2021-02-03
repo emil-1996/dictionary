@@ -18,3 +18,5 @@ Route::get('/', function () {
 });
 
 Route::get('/Dictionary', 'App\Http\Controllers\DictionaryController@show');
+Route::get('/DictionaryConfig', 'App\Http\Controllers\DictionaryConfigController@show');
+Route::get('/DictionaryItem', 'App\Http\Controllers\DictionaryItemController@show');
