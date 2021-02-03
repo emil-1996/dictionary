@@ -30,3 +30,6 @@ Route::delete('/dictionary-item/delete/{id}', 'App\Http\Controllers\DictionaryIt
 
 Route::post('/dictionary-config/change-status/{id}', 'App\Http\Controllers\DictionaryConfigController@changeStatus');
 Route::post('/dictionary-item/change-status/{id}', 'App\Http\Controllers\DictionaryItemController@changeStatus');
+
+Route::post('/dictionary-config/update/', 'App\Http\Controllers\DictionaryConfigController@update');
+Route::post('/dictionary-item/update/', 'App\Http\Controllers\DictionaryItemController@update');

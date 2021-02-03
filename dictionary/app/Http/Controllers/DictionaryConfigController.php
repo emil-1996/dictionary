@@ -40,4 +40,19 @@ class DictionaryConfigController extends Controller
         return json_encode($item->update(["status" => intval(!$item['status'])]));
     }
 
+    public function update(Request $request)
+    {
+        $validated = $request->validate(['id' => "required",
+            "status" => "in:1,0",
+            "lang_code" => "string",
+            "language" => "string"]);
+        $requestData = $request->all();
+        $item = DictionaryConfig::find($requestData['id']);
+        if (empty($item)) {
+            return json_encode('Nie znaleziono szukanego produktu');
+        }
+        unset($requestData['id']);
+        return json_encode($item->update($requestData));
+    }
+
 }
