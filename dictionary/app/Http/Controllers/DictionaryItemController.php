@@ -25,7 +25,7 @@ class DictionaryItemController extends Controller
 
         $result = DictionaryConfig::where('id', '=', $request->all()['lang_id'])->count();
         if (empty($result)) {
-            echo json_encode('Nie można dopasować lang_id do istniejącego słownika');
+            return json_encode('Nie można dopasować lang_id do istniejącego słownika');
         }
 
         echo json_encode(DictionaryItem::create($request->all()));
