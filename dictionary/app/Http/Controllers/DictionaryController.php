@@ -9,12 +9,18 @@ class DictionaryController extends Controller
 {
     public function index()
     {
-        echo Dictionary::getAll();
+        return Dictionary::getAll();
     }
 
     public function show($id)
     {
-        echo Dictionary::show($id);
+        return Dictionary::show($id);
+    }
+
+    public function renderIndex()
+    {
+        $data = json_decode($this->index());
+        return view("index", compact('data'));
     }
 
 }
