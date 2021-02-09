@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\DictionaryConfig;
 use Illuminate\Http\Request;
 use App\Models\DictionaryItem;
+use App\Intefaces;
 
-class DictionaryItemController extends Controller
+class DictionaryItemController extends Controller implements Intefaces\crud
 {
     public function index()
     {
@@ -20,7 +21,7 @@ class DictionaryItemController extends Controller
             ->where("status", "=", "1");
     }
 
-    public function create(Request $request)
+    public function add(Request $request)
     {
         $request->validate(['lang_id' => "required",
             "value" => "required"]);
@@ -47,9 +48,9 @@ class DictionaryItemController extends Controller
         return json_encode($item->update(["status" => intval(!$item['status'])]));
     }
 
-    public function update(Request $request)
+    public function edit(Request $request)
     {
-        $validated = $request->validate(['id' => "required",
+        $request->validate(['id' => "required",
             "status" => "in:1,0",
             "value" => "string"]);
         $requestData = $request->all();
