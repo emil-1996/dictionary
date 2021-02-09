@@ -11,6 +11,6 @@ interface crud
     public function changeStatus($id);
     public function add(Request $request);
     public function edit(Request $request);
-    public function delete($id);
+    public function remove($id);
 }
 

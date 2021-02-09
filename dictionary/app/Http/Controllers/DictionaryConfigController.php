@@ -8,52 +8,41 @@ use App\Intefaces;
 
 class DictionaryConfigController extends Controller implements Intefaces\crud
 {
+    private $model;
+
+    public function __construct()
+    {
+        $this->model = new DictionaryConfig();
+    }
+
     public function index()
     {
-        echo DictionaryConfig::all()->where("status", "=", "1");
+        echo $this->model->index();
     }
 
     public function show($id)
     {
-        echo DictionaryConfig::all()
-            ->where("id", "=", $id)
-            ->where("status", "=", "1");
+        echo $this->model->show($id);
     }
 
     public function add(Request $request)
     {
-        $request->validate(['lang_code' => "required",
-            "language" => "required"]);
-        echo json_encode(DictionaryConfig::create($request->all()));
+        echo $this->model->add($request);
     }
 
-    public function delete($id)
+    public function remove($id)
     {
-        echo DictionaryConfig::find($id)?->delete();
+        echo $this->model->remove($id);
     }
 
     public function changeStatus($id)
     {
-        $item = DictionaryConfig::find($id);
-        if (empty($item)) {
-            return json_encode('Nie znaleziono szukanego produktu');
-        }
-        return json_encode($item->update(["status" => intval(!$item['status'])]));
+        echo $this->model->changeStatus($id);
     }
 
     public function edit(Request $request)
     {
-        $request->validate(['id' => "required",
-            "status" => "in:1,0",
-            "lang_code" => "string",
-            "language" => "string"]);
-        $requestData = $request->all();
-        $item = DictionaryConfig::find($requestData['id']);
-        if (empty($item)) {
-            return json_encode('Nie znaleziono szukanego produktu');
-        }
-        unset($requestData['id']);
-        return json_encode($item->update($requestData));
+        echo $this->model->edit($request);
     }
 
 }

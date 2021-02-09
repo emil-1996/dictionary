@@ -25,8 +25,8 @@ Route::get('/dictionary-item/show/{id}', 'App\Http\Controllers\DictionaryItemCon
 Route::post('/dictionary-config/add/', 'App\Http\Controllers\DictionaryConfigController@add');
 Route::post('/dictionary-item/add/', 'App\Http\Controllers\DictionaryItemController@add');
 
-Route::delete('/dictionary-config/delete/{id}', 'App\Http\Controllers\DictionaryConfigController@delete');
-Route::delete('/dictionary-item/delete/{id}', 'App\Http\Controllers\DictionaryItemController@delete');
+Route::delete('/dictionary-config/delete/{id}', 'App\Http\Controllers\DictionaryConfigController@remove');
+Route::delete('/dictionary-item/delete/{id}', 'App\Http\Controllers\DictionaryItemController@remove');
 
 Route::post('/dictionary-config/change-status/{id}', 'App\Http\Controllers\DictionaryConfigController@changeStatus');
 Route::post('/dictionary-item/change-status/{id}', 'App\Http\Controllers\DictionaryItemController@changeStatus');
