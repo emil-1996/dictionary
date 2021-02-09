@@ -1,10 +1,12 @@
 @extends('head')
 
 @section('content')
-    <button
+
+    <a href="/add-item"><button
         class="p-2 my-2 bg-blue-500 text-white rounded-md focus:outline-none focus:ring-2 ring-blue-300 ring-offset-2 w-full">
         NEW ITEM
-    </button>
+    </button></a>
+
     @if(!empty($data))
         <table id="item-table" class="min-w-full table-auto">
             <thead class="justify-between">

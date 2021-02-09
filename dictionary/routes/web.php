@@ -18,3 +18,4 @@ use Illuminate\Support\Facades\Route;
 //});
 
 Route::get('/', 'App\Http\Controllers\DictionaryController@renderIndex');
+Route::get('/add-item', 'App\Http\Controllers\DictionaryItemController@renderAddItem');

@@ -13,4 +13,9 @@ class DictionaryItemController extends DictionaryAbstractController
     {
         $this->model = new DictionaryItem();
     }
+
+    public function renderAddItem()
+    {
+        return view("newItem");
+    }
 }
