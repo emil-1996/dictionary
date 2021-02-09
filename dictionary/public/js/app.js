@@ -1842,8 +1842,6 @@ module.exports = {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-console.log("Test");
-
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
