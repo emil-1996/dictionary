@@ -1,5 +1,3 @@
-require('./bootstrap');
-
 function getTaskFromForm() {
     const form = document.forms;
     const addTaskForm = form['addTask'];
