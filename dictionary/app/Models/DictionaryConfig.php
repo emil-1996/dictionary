@@ -42,7 +42,7 @@ class DictionaryConfig extends Model implements Intefaces\crud
     {
         $item = DictionaryConfig::find($id);
         if (empty($item)) {
-            return json_encode('Nie znaleziono szukanego produktu');
+            return json_encode(['error' => "Nie znalezionego szukanego produktu"]);
         }
         return json_encode($item->update(["status" => intval(!$item['status'])]));
     }
@@ -56,7 +56,7 @@ class DictionaryConfig extends Model implements Intefaces\crud
         $requestData = $request->all();
         $item = DictionaryConfig::find($requestData['id']);
         if (empty($item)) {
-            return json_encode('Nie znaleziono szukanego produktu');
+            return json_encode(['error' => "Nie znalezionego szukanego produktu"]);
         }
         unset($requestData['id']);
         return json_encode($item->update($requestData));

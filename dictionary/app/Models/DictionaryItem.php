@@ -33,7 +33,7 @@ class DictionaryItem extends Model implements Intefaces\crud
 
         $result = DictionaryConfig::where('id', '=', $request->all()['lang_id'])->count();
         if (empty($result)) {
-            return json_encode('Nie można dopasować lang_id do istniejącego słownika');
+            return json_encode(['error' => "Nie można dopasować lang_id do istniejącego słownika"]);
         }
 
         return json_encode(DictionaryItem::create($request->all()));
@@ -48,7 +48,7 @@ class DictionaryItem extends Model implements Intefaces\crud
     {
         $item = DictionaryItem::find($id);
         if (empty($item)) {
-            return json_encode('Nie znaleziono szukanego produktu');
+            return json_encode(['error' => "Nie znaleziono szukanego produktu"]);
         }
         return json_encode($item->update(["status" => intval(!$item['status'])]));
     }
@@ -61,7 +61,7 @@ class DictionaryItem extends Model implements Intefaces\crud
         $requestData = $request->all();
         $item = DictionaryItem::find($requestData['id']);
         if (empty($item)) {
-            return json_encode('Nie znaleziono szukanego produktu');
+            return json_encode(['error' => "Nie znaleziono szukanego produktu"]);
         }
         unset($requestData['id']);
         return json_encode($item->update($requestData));
