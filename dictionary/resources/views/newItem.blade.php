@@ -24,31 +24,4 @@
                    class="bg-indigo-500 text-white px-4 py-2 border rounded-md hover:bg-white hover:border-indigo-500 hover:text-black"/>
         </form>
     </div>
-
-    <script>
-
-        function getTaskFromForm() {
-            const form = document.forms;
-            const addTaskForm = form['addTask'];
-            const value = addTaskForm.elements["value"].value;
-            const lang_id = addTaskForm.elements["lang_id"].value;
-            return {value: value, lang_id: lang_id};
-        }
-
-        function createDictionaryItem() {
-            const data = getTaskFromForm();
-            let sendData = new FormData();
-
-            for (const [key, value] of Object.entries(data)) {
-                sendData.append(key, value);
-            }
-            let request = new XMLHttpRequest();
-            request.open('POST', '/api/dictionary-item/add/');
-            request.onload = () => {
-                window.location.replace('/');
-            };
-            request.send(sendData);
-        }
-
-    </script>
 @endsection

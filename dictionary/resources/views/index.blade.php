@@ -2,10 +2,12 @@
 
 @section('content')
 
-    <a href="/add-item"><button
-        class="p-2 my-2 bg-blue-500 text-white rounded-md focus:outline-none focus:ring-2 ring-blue-300 ring-offset-2 w-full">
-        NEW ITEM
-    </button></a>
+    <a href="/add-item">
+        <button
+            class="p-2 my-2 bg-blue-500 text-white rounded-md focus:outline-none focus:ring-2 ring-blue-300 ring-offset-2 w-full">
+            NEW ITEM
+        </button>
+    </a>
 
     @if(!empty($data))
         <table id="item-table" class="min-w-full table-auto">
@@ -42,11 +44,4 @@
             </tbody>
         </table>
     @endif
-
-    <script>
-        async function remove(item, id) {
-            const response = await fetch('/api/dictionary-item/delete/' + id, {method: "DELETE"});
-            item.parentElement.parentElement.style.display = "none"
-        }
-    </script>
 @endsection
