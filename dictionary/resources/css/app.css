@@ -1,9 +1,7 @@
-.container
-{
+.container {
     margin: 0 auto;
 }
 
-#item-table
-{
-    margin-top: 30px;
+#item-table {
+    margin: auto auto;
 }
