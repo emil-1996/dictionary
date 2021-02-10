@@ -16,7 +16,12 @@ function createDictionaryItem() {
     let request = new XMLHttpRequest();
     request.open('POST', '/api/dictionary-item/add/');
     request.onload = () => {
-        window.location.replace('/');
+        let response = JSON.parse(request.response)
+        if (response.hasOwnProperty('error')) {
+            alert(response.error);
+        } else {
+            window.location.replace('/')
+        }
     };
     request.send(sendData);
 }
